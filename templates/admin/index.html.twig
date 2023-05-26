@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AdminUser index {% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center">Admin List of User</h1>
+    <section>
+        <div class="container py-5">
+            <div class="row">
+                {% for user in users %}
+                    <div class="col-lg-4">
+                        <div class="card mb-4 border-dark">
+                            <div class="card-body text-center" style="height: 450px">
+                                {% if user.avatarFilename %}
+                                    <img
+                                            src="{{ asset('img/userAvatar/'~ user.avatarFilename ) }}"
+                                            alt="avatar" class="rounded-circle img-fluid"
+                                            style="width: 150px; min-height: 150px"/>
+                                {% else %}
+                                    <img
+                                            src="{{ asset('img/userAvatar/defaultAvatar.jpg') }}"
+                                            alt="avatar" class="rounded-circle img-fluid"
+                                            style="width: 150px; height: 150px">
+                                {% endif %}
+                                <h5 class="my-3">{{ user.pseudo }}</h5>
+                                <p class="text-muted mb-1">lastname : {{ user.lastname }} </p>
+                                <p class="text-muted mb-1">Firstname: {{ user.firstname }} </p>
+                                <p class="text-muted mb-1">Email : {{ user.email }}</p>
+                                <p class="text-muted mb-4">Campus : {{ user.userCampus.name }}</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <a class="btn btn-info m-2 my-sm-2 " href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                                    <a class="btn btn-info m-2 my-sm-2 " href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

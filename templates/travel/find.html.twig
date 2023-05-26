@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div class="spinner-border js-loading" role="status" aria-hidden="true" style="display: none">
+    <span class="sr-only">Loading...</span>
+</div>
+
+{{ form_row(form.travelByName) }}
+
+<h4>Catégories</h4>
+{{ form_row(form.campusToSearchTravel) }}
+{{ form_row(form.leaderTravel) }}
+{{ form_row(form.statusId) }}
+{{ form_row(form.travelsSubscripted) }}
+{{ form_row(form.travelsNotSubscripted) }}
+{{ form_row(form.searchDateStart) }}
+{{ form_row(form.searchDateFin) }}
+
+
+
+
+<div class="d-grid gap-2">
+<button type="submit" _msttexthash="232960" class=" btn  btn-info m-2 ">Filtrer</button>
+</div>
+{{ form_end(form) }}

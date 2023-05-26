@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Place index{% endblock %}
+
+{% block body %}
+    <section>
+    <h1 class="text-center">Place List</h1>
+        <div class="container py-7">
+            <div class="row mb-0">
+                <div class="col-lg-3">
+                    <a class="btn btn-primary  href="{{ path('app_place_new') }}">Create new Place</a>
+                </div>
+                {% for place in places %}
+                <div class="col-lg-3">
+                    <div class="card mb-4 border-dark">
+                        <div class="card-body text-center ">
+                            <img
+                                    src="{{ asset('img/travelLogo/place.jpg') }}"
+                                    alt="avatar" class="rounded-circle img-fluid"
+                                    style="width: 150px; height: 150px;"/>
+                            <h5 class="my-3">{{ place.name }}</h5>
+                            <p class="text-muted mb-1"> Street : {{ place.street }}</p>
+                            <p class="text-muted mb-1"> Latitude : {{ place.latitude }}</p>
+                            <p class="text-muted mb-1"> Longitude : {{ place.longitude }}</p>
+
+                            <div class="d-flex justify-content-center mb-2">
+                                <a class="btn btn-info m-2 my-sm-2 " href="{{ path('app_place_show', {'id': place.id}) }}">show</a>
+                                <a class="btn btn-info m-2 my-sm-2 " href="{{ path('app_place_edit', {'id': place.id}) }}">edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

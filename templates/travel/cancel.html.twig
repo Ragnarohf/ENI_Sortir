@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cancel travel{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container py-5">
+            <h1 class="text-center"> Cancel travel {{ travel.name }}</h1>
+            <div class="row">
+                {{ form_start(form) }}
+                <p> Name : {{ form.name.vars.value }}</p>
+                <p> Start Date : {{ form.dateStart.vars.value |format_datetime('full', 'short', locale='fr') }}</p>
+                <p> Campus : {{ travel.campusOrganiser.name }}</p>
+                <p> Place : {{ travel.place.name }}</p>
+                {{ form_widget(form) }}
+
+                <div>
+                    <button class="btn btn-primary">{{ button_label|default('Cancel travel') }}</button>
+                    <button class="btn btn-primary"><a href="{{ path('app_travel_index') }}">back to list</a></button>
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+{% endblock %}
